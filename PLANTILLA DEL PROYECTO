@@ -1,0 +1,9 @@
+El proyecto incluye:
+- app.py: el código principal de Python.
+- requirements.txt: las bibliotecas que necesitas instalar.
+- templates/index.html: la página web con información sobre el cambio climático.
+- static/style.css: los estilos, colores y diseño.
+- PREGUNTAS_PARA_EL_TUTOR.md: las preguntas que puedes enviar a tu profesor.
+- README.md: las instrucciones para ejecutar el proyecto.
+- .gitignore: los archivos que Git no necesita subir al repositorio.
+Esta es una plantilla inicial: todavía falta programar funciones como el juego de preguntas y el sistema de puntuaciones.

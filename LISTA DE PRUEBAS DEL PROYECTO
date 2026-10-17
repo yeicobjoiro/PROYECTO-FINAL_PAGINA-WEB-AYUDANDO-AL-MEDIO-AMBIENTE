@@ -1,0 +1,12 @@
+Lista de pruebas del proyecto
+Categoría	Tarea que se debe probar	Resultado esperado	Prioridad
+Funcionalidad	Comprobar que la página web abre correctamente.	La página carga sin errores.	Alta
+Funcionalidad	Probar el juego de preguntas ambientales.	Las preguntas y respuestas funcionan correctamente.	Alta
+Funcionalidad	Comprobar el sistema de puntuación.	Los puntos se calculan correctamente.	Alta
+Funcionalidad	Revisar las recomendaciones ambientales.	Se muestran recomendaciones relacionadas con las respuestas.	Alta
+Interfaz	Revisar los colores, botones e imágenes.	Los elementos se ven correctamente.	Media
+Interfaz	Probar la página desde un celular y un computador.	El contenido se adapta a las pantallas.	Media
+Facilidad de uso	Pedir a otra persona que utilice la página.	Puede utilizarla sin dificultades.	Media
+Seguridad	Introducir datos inesperados en los campos.	La página controla los datos incorrectos sin fallar.	Alta
+Rendimiento	Comprobar cuánto tarda en cargar la página.	La página carga en un tiempo razonable.	Media
+Contenido	Revisar la información sobre la crisis climática.	La información es clara y correcta.	Alta

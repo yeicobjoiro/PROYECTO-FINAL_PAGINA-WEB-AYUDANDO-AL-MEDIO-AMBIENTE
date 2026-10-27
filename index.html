@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayudando al Medio Ambiente</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eff8ed;
+    color: #23452c;
+}
+
+header {
+    background: #18733b;
+    color: white;
+    text-align: center;
+    padding: 25px 12px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+nav {
+    background: #10562b;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+nav button {
+    background: white;
+    color: #145c2b;
+}
+
+nav button:hover {
+    background: #d5f5c8;
+}
+
+main {
+    max-width: 1050px;
+    margin: auto;
+    padding: 20px;
+}
+
+.seccion {
+    display: none;
+    margin-bottom: 25px;
+}
+
+.seccion.activa {
+    display: block;
+}
+
+.tarjeta {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    margin: 16px 0;
+    box-shadow: 0 3px 10px #00000012;
+}
+
+h2 {
+    color: #18733b;
+}
+
+h3 {
+    color: #24683a;
+}
+
+.boton-verde {
+    background: #218443;
+    color: white;
+    margin: 5px 0;
+}
+
+.boton-verde:hover {
+    background: #105c2a;
+}
+
+.mision {
+    border-left: 5px solid #37a65b;
+    padding: 12px;
+    margin: 12px 0;
+    background: #f3fbf0;
+    border-radius: 8px;
+}
+
+.mision.completada {
+    background: #d8f5d9;
+    border-left-color: #18863d;
+}
+
+.mision input {
+    width: 19px;
+    height: 19px;
+    margin-right: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.progreso {
+    background: #ddd;
+    height: 18px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progreso div {
+    height: 100%;
+    width: 0;
+    background: #27a34a;
+    transition: width 0.3s;
+}
+
+.insignias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 12px;
+}
+
+.insignia {
+    text-align: center;
+    padding: 17px 8px;
+    background: #f2f2f2;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    opacity: 0.6;
+}
+
+.insignia.desbloqueada {
+    opacity: 1;
+    background: #fff6d8;
+    border-color: #e6b82e;
+}
+
+.emoji-insignia {
+    font-size: 42px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+}
+
+#zonaJuego {
+    background: #b9e8ff;
+    border: 4px solid #276b3a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#juego {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.controles {
+    background: #e8f5e6;
+    padding: 12px;
+    border-radius: 8px;
+    line-height: 1.8;
+}
+
+#resultado {
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.pregunta {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.pregunta label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+footer {
+    background: #10562b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 12px;
+    }
+
+    nav button {
+        flex: 1 1 40%;
+    }
+
+    .tarjeta {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌎 Ayudando al Medio Ambiente</h1>
+    <p>Pequeñas acciones, grandes cambios.</p>
+</header>
+
+<nav>
+    <button onclick="mostrarSeccion('inicio')">🏠 Inicio</button>
+    <button onclick="mostrarSeccion('consejos')">🌱 Consejos</button>
+    <button onclick="mostrarSeccion('juegos')">🎮 Juegos</button>
+    <button onclick="mostrarSeccion('preguntas')">❓ Preguntas</button>
+    <button onclick="mostrarSeccion('misiones')">🎯 Misiones</button>
+    <button onclick="mostrarSeccion('insignias')">🏆 Insignias</button>
+</nav>
+
+<main>
+
+<!-- INICIO -->
+
+<section id="inicio" class="seccion activa">
+    <div class="tarjeta">
+        <h2>¡Bienvenido a nuestro planeta! 🌍</h2>
+        <p>
+            Aprende cómo cuidar la naturaleza, juega, responde preguntas
+            y completa misiones para convertirte en un protector del planeta.
+        </p>
+        <button class="boton-verde"
+            onclick="mostrarSeccion('juegos')">¡Jugar ahora!</button>
+        <button class="boton-verde"
+            onclick="mostrarSeccion('consejos')">Ver consejos</button>
+        <button class="boton-verde"
+            onclick="mostrarSeccion('preguntas')">Responder preguntas</button>
+        <button class="boton-verde"
+            onclick="mostrarSeccion('misiones')">Mis retos de hoy</button>
+    </div>
+
+    <div class="tarjeta">
+        <h2>🌳 ¿Por qué debemos cuidar el medio ambiente?</h2>
+        <p>
+            La naturaleza nos proporciona agua, aire, alimentos y hogar.
+            Reducir la basura, ahorrar recursos y proteger los animales
+            ayuda a conservar nuestro planeta.
+        </p>
+    </div>
+
+    <div class="tarjeta">
+        <h2>🌡️ Calculadora de impacto ambiental</h2>
+        <p>Responde estas preguntas para recibir una orientación sencilla.</p>
+
+        <label for="transporte">¿Cuántos días a la semana usas automóvil?</label><br>
+        <input id="transporte" type="number" min="0" max="7" value="3"><br><br>
+
+        <label for="plastico">¿Cuántos productos desechables usas al día?</label><br>
+        <input id="plastico" type="number" min="0" max="100" value="3"><br><br>
+
+        <label for="agua">¿Cuántos minutos dura tu ducha?</label><br>
+        <input id="agua" type="number" min="0" max="180" value="10"><br><br>
+
+        <button class="boton-verde" onclick="calcularImpacto()">
+            Calcular impacto
+        </button>
+
+        <p id="resultadoImpacto"></p>
+    </div>
+</section>
+
+<!-- CONSEJOS -->
+
+<section id="consejos" class="seccion">
+    <div class="tarjeta">
+        <h2>🌱 Consejos para cuidar el planeta</h2>
+
+        <div class="mision">
+            <h3>💧 Ahorra agua</h3>
+            Cierra el grifo mientras te cepillas los dientes y evita desperdiciar agua.
+        </div>
+
+        <div class="mision">
+            <h3>♻️ Recicla</h3>
+            Separa los residuos y deposítalos en los recipientes correspondientes.
+        </div>
+
+        <div class="mision">
+            <h3>💡 Ahorra energía</h3>
+            Apaga las luces y desconecta los aparatos que no estés utilizando.
+        </div>
+
+        <div class="mision">
+            <h3>🌳 Cuida los árboles</h3>
+            Protege las plantas y evita dañar las zonas verdes.
+        </div>
+
+        <div class="mision">
+            <h3>🛍️ Reduce los plásticos</h3>
+            Lleva una bolsa reutilizable y utiliza una botella que puedas rellenar.
+        </div>
+
+        <div class="mision">
+            <h3>🐦 Protege a los animales</h3>
+            Respeta sus hábitats y nunca abandones a tus mascotas.
+        </div>
+
+        <div class="mision">
+            <h3>🚲 Muévete de forma sostenible</h3>
+            Camina, usa la bicicleta o el transporte público cuando sea posible.
+        </div>
+    </div>
+</section>
+
+<!-- JUEGOS -->
+
+<section id="juegos" class="seccion">
+    <div class="tarjeta">
+        <h2>🎮 Juego: ¡Salva el planeta!</h2>
+        <p>
+            La basura está cayendo del cielo. ¡Dispara para eliminarla
+            antes de que llegue al suelo!
+        </p>
+
+        <div class="controles">
+            <strong>Controles del juego:</strong><br>
+            ⬅️ A: moverte a la izquierda.<br>
+            ➡️ D: moverte a la derecha.<br>
+            🚀 ESPACIO: disparar.<br>
+            📱 En celular: utiliza los botones de abajo.
+        </div>
+
+        <p>
+            Puntuación: <strong id="puntos">0</strong>
+            &nbsp; | &nbsp;
+            Basura perdida: <strong id="perdidas">0</strong>
+        </p>
+
+        <div id="zonaJuego">
+            <canvas id="juego" width="800" height="430"></canvas>
+        </div>
+
+        <p id="estadoJuego">Pulsa Iniciar para comenzar.</p>
+
+        <button class="boton-verde" onclick="iniciarJuego()">▶ Iniciar</button>
+        <button class="boton-verde" onclick="pausarJuego()">⏸ Pausar</button>
+        <button class="boton-verde" onclick="reiniciarJuego()">🔄 Reiniciar</button>
+
+        <div style="text-align:center; margin-top:15px;">
+            <button class="boton-verde"
+                onpointerdown="iniciarMovimiento(-1)"
+                onpointerup="detenerMovimiento()"
+                onpointerleave="detenerMovimiento()"
+                ontouchend="detenerMovimiento()">⬅️ Izquierda</button>
+
+            <button class="boton-verde"
+                onpointerdown="disparar()">🚀 Disparar</button>
+
+            <button class="boton-verde"
+                onpointerdown="iniciarMovimiento(1)"
+                onpointerup="detenerMovimiento()"
+                onpointerleave="detenerMovimiento()"
+                ontouchend="detenerMovimiento()">Derecha ➡️</button>
+        </div>
+    </div>
+</section>
+
+<!-- PREGUNTAS -->
+
+<section id="preguntas" class="seccion">
+    <div class="tarjeta">
+        <h2>❓ Preguntas sobre el medio ambiente</h2>
+        <p>Selecciona una respuesta para cada pregunta y comprueba tu resultado.</p>
+
+        <form id="formPreguntas">
+
+            <div class="pregunta">
+                <strong>1. ¿Qué debemos hacer con los residuos reciclables?</strong>
+                <label><input type="radio" name="p1" value="a"> Tirarlos al río.</label>
+                <label><input type="radio" name="p1" value="b"> Separarlos correctamente.</label>
+                <label><input type="radio" name="p1" value="c"> Quemarlos en casa.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>2. ¿Cómo podemos ahorrar agua?</strong>
+                <label><input type="radio" name="p2" value="a"> Dejando el grifo abierto.</label>
+                <label><input type="radio" name="p2" value="b"> Lavando la calle con manguera.</label>
+                <label><input type="radio" name="p2" value="c"> Cerrando el grifo cuando no lo usamos.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>3. ¿Qué ayuda a reducir la contaminación del aire?</strong>
+                <label><input type="radio" name="p3" value="a"> Caminar o utilizar bicicleta.</label>
+                <label><input type="radio" name="p3" value="b"> Quemar basura.</label>
+                <label><input type="radio" name="p3" value="c"> Usar más automóviles.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>4. ¿Por qué son importantes los árboles?</strong>
+                <label><input type="radio" name="p4" value="a"> Porque producen plástico.</label>
+                <label><input type="radio" name="p4" value="b"> Porque contribuyen a la vida y los ecosistemas.</label>
+                <label><input type="radio" name="p4" value="c"> Porque ensucian el aire.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>5. ¿Qué debemos hacer para proteger a los animales?</strong>
+                <label><input type="radio" name="p5" value="a"> Destruir sus hábitats.</label>
+                <label><input type="radio" name="p5" value="b"> Abandonarlos.</label>
+                <label><input type="radio" name="p5" value="c"> Respetar sus hábitats.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>6. ¿Qué significa reutilizar?</strong>
+                <label><input type="radio" name="p6" value="a"> Volver a utilizar un objeto.</label>
+                <label><input type="radio" name="p6" value="b"> Tirar todo a la basura.</label>
+                <label><input type="radio" name="p6" value="c"> Comprar siempre algo nuevo.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>7. ¿Qué debemos hacer con las luces que no necesitamos?</strong>
+                <label><input type="radio" name="p7" value="a"> Dejarlas encendidas.</label>
+                <label><input type="radio" name="p7" value="b"> Apagarlas.</label>
+                <label><input type="radio" name="p7" value="c"> Cambiarlas cada hora.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>8. ¿Qué es una acción sostenible?</strong>
+                <label><input type="radio" name="p8" value="a"> Desperdiciar los recursos.</label>
+                <label><input type="radio" name="p8" value="b"> Arrojar residuos a la naturaleza.</label>
+                <label><input type="radio" name="p8" value="c"> Usar los recursos responsablemente.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>9. ¿Qué podemos utilizar en lugar de bolsas desechables?</strong>
+                <label><input type="radio" name="p9" value="a"> Bolsas reutilizables.</label>
+                <label><input type="radio" name="p9" value="b"> Más bolsas plásticas.</label>
+                <label><input type="radio" name="p9" value="c"> Ninguna bolsa, aunque sea necesaria.</label>
+            </div>
+
+            <div class="pregunta">
+                <strong>10. ¿Quién puede ayudar a cuidar el planeta?</strong>
+                <label><input type="radio" name="p10" value="a"> Solamente los científicos.</label>
+                <label><input type="radio" name="p10" value="b"> Todas las personas.</label>
+                <label><input type="radio" name="p10" value="c"> Nadie.</label>
+            </div>
+
+            <button type="button" class="boton-verde"
+                onclick="calificarPreguntas()">Comprobar respuestas</button>
+
+            <button type="reset" class="boton-verde"
+                onclick="document.getElementById('resultadoPreguntas').textContent=''">
+                Volver a empezar
+            </button>
+        </form>
+
+        <p id="resultadoPreguntas"></p>
+    </div>
+</section>
+
+<!-- MISIONES DIARIAS -->
+
+<section id="misiones" class="seccion">
+    <div class="tarjeta">
+        <h2>🎯 Tus 3 misiones del día</h2>
+        <p>
+            Completa los retos en la vida real. Cada día recibirás tres
+            misiones, y el conjunto cambia al cambiar la fecha.
+        </p>
+
+        <p>Fecha: <strong id="fechaMisiones"></strong></p>
+        <p>Misiones completadas: <strong id="contadorMisiones">0 de 3</strong></p>
+
+        <div class="progreso">
+            <div id="barraMisiones"></div>
+        </div>
+
+        <div id="listaMisiones"></div>
+
+        <p id="mensajeMisiones"></p>
+    </div>
+
+    <div class="tarjeta">
+        <h2>🔥 Tu racha de días</h2>
+        <p>Días consecutivos completando las tres misiones:</p>
+        <h2><span id="racha">0</span> días</h2>
+        <p>Tu racha aumenta cuando completas las tres misiones de un día.
+        Si pasa un día sin completar los retos, la racha se reinicia.</p>
+    </div>
+</section>
+
+<!-- INSIGNIAS -->
+
+<section id="insignias" class="seccion">
+    <div class="tarjeta">
+        <h2>🏆 Colección de insignias</h2>
+        <p>
+            Completa las tres misiones diarias para mantener tu racha.
+            Desbloquearás una insignia al alcanzar cada meta.
+        </p>
+
+        <div class="insignias">
+
+            <div class="insignia" id="insignia7">
+                <span class="emoji-insignia">🥉</span>
+                <strong>Protector principiante</strong>
+                <p>7 días de racha</p>
+                <small>Bloqueada</small>
+            </div>
+
+            <div class="insignia" id="insignia30">
+                <span class="emoji-insignia">🥈</span>
+                <strong>Guardián del planeta</strong>
+                <p>30 días de racha</p>
+                <small>Bloqueada</small>
+            </div>
+
+            <div class="insignia" id="insignia180">
+                <span class="emoji-insignia">🥇</span>
+                <strong>Héroe ecológico</strong>
+                <p>6 meses de racha</p>
+                <small>Bloqueada</small>
+            </div>
+
+            <div class="insignia" id="insignia365">
+                <span class="emoji-insignia">🏆</span>
+                <strong>Héroe de la Tierra</strong>
+                <p>1 año de racha</p>
+                <small>Bloqueada</small>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>🌍 Ayudando al Medio Ambiente | ¡Cada acción cuenta!</p>
+</footer>
+
+<script>
+/* NAVEGACIÓN */
+
+function mostrarSeccion(id) {
+    var secciones = document.querySelectorAll(".seccion");
+
+    for (var i = 0; i < secciones.length; i++) {
+        secciones[i].classList.remove("activa");
+    }
+
+    document.getElementById(id).classList.add("activa");
+
+    if (id !== "juegos") {
+        pausarJuego();
+    }
+
+    if (id === "juegos") {
+        dibujarJuego();
+    }
+
+    window.scrollTo(0, 0);
+}
+
+/* CALCULADORA AMBIENTAL */
+
+function calcularImpacto() {
+    var transporte = Number(document.getElementById("transporte").value);
+    var plastico = Number(document.getElementById("plastico").value);
+    var agua = Number(document.getElementById("agua").value);
+
+    if (transporte < 0 || transporte > 7 ||
+        plastico < 0 || plastico > 100 ||
+        agua < 0 || agua > 180 ||
+        !Number.isFinite(transporte) ||
+        !Number.isFinite(plastico) ||
+        !Number.isFinite(agua)) {
+
+        document.getElementById("resultadoImpacto").textContent =
+            "Introduce valores válidos.";
+        return;
+    }
+
+    var puntos = 0;
+
+    if (transporte >= 5) puntos += 2;
+    else if (transporte >= 3) puntos += 1;
+
+    if (plastico >= 6) puntos += 2;
+    else if (plastico >= 3) puntos += 1;
+
+    if (agua > 15) puntos += 2;
+    else if (agua > 8) puntos += 1;
+
+    var nivel;
+    var consejo;
+
+    if (puntos <= 1) {
+        nivel = "Bajo";
+        consejo = "¡Muy bien! Sigue manteniendo tus hábitos sostenibles.";
+    } else if (puntos <= 3) {
+        nivel = "Medio";
+        consejo = "Puedes mejorar reduciendo los desechables y ahorrando agua.";
+    } else {
+        nivel = "Alto";
+        consejo = "Intenta ahorrar agua, reducir residuos y usar transporte sostenible.";
+    }
+
+    document.getElementById("resultadoImpacto").textContent =
+        "Nivel orientativo: " + nivel + ". " + consejo;
+}
+
+/* CUESTIONARIO */
+
+function calificarPreguntas() {
+    var respuestas = ["b", "c", "a", "b", "c", "a", "b", "c", "a", "b"];
+    var correctas = 0;
+
+    for (var i = 0; i < respuestas.length; i++) {
+        var seleccionada = document.querySelector(
+            'input[name="p' + (i + 1) + '"]:checked'
+        );
+
+        if (seleccionada && seleccionada.value === respuestas[i]) {
+            correctas++;
+        }
+    }
+
+    document.getElementById("resultadoPreguntas").textContent =
+        "Tu resultado: " + correctas + " de 10 puntos. " +
+        (correctas === 10 ? "¡Excelente, conoces muy bien el planeta!" :
+        correctas >= 7 ? "¡Muy bien! Sigue aprendiendo." :
+        "¡Sigue practicando y revisa los consejos ecológicos!");
+}
+
+/* MISIONES DIARIAS Y PROGRESO */
+
+function cargarDatos() {
+    try {
+        return JSON.parse(localStorage.getItem("medioAmbienteDatos")) || {};
+    } catch (e) {
+        return {};
+    }
+}
+
+var datos = cargarDatos();
+
+if (!datos.historial) datos.historial = {};
+if (!datos.racha) datos.racha = 0;
+if (!datos.ultimaCompleta) datos.ultimaCompleta = "";
+if (!datos.misiones) datos.misiones = {};
+if (!datos.insignias) datos.insignias = {};
+
+var retos = [
+    [
+        "Cierra el grifo mientras te cepillas los dientes.",
+        "Recoge y separa cinco residuos reciclables.",
+        "Apaga las luces que no estés utilizando."
+    ],
+    [
+        "Utiliza una botella reutilizable durante el día.",
+        "Camina durante 15 minutos si es seguro hacerlo.",
+        "Riega una planta utilizando solo el agua necesaria."
+    ],
+    [
+        "Evita utilizar bolsas plásticas en una compra.",
+        "Dedica 10 minutos a recoger basura de un lugar seguro.",
+        "Explica a alguien una manera de ahorrar agua."
+    ],
+    [
+        "Desconecta un aparato que no estés utilizando.",
+        "Reutiliza una caja, un frasco u otro objeto limpio.",
+        "Observa una planta o un animal sin molestarlo."
+    ],
+    [
+        "Separa correctamente los residuos de tu merienda.",
+        "Utiliza ambos lados de una hoja de papel.",
+        "Ayuda a mantener limpio un espacio de tu hogar."
+    ],
+    [
+        "Evita desperdiciar alimentos en una comida.",
+        "Usa una bolsa reutilizable si sales de compras.",
+        "Comparte un consejo para cuidar el planeta."
+    ],
+    [
+        "Ahorra agua durante el baño.",
+        "Clasifica los residuos con ayuda de tu familia.",
+        "Cuida una planta o revisa cómo está creciendo."
+    ],
+    [
+        "Evita usar un producto desechable que no necesites.",
+        "Apaga un equipo electrónico cuando termines de usarlo.",
+        "Limpia un espacio sin arrojar residuos al suelo."
+    ]
+];
+
+function fechaLocal() {
+    var ahora = new Date();
+    var mes = String(ahora.getMonth() + 1).padStart(2, "0");
+    var dia = String(ahora.getDate()).padStart(2, "0");
+
+    return ahora.getFullYear() + "-" + mes + "-" + dia;
+}
+
+function moverFecha(fecha, dias) {
+    var partes = fecha.split("-");
+    var d = new Date(
+        Number(partes[0]),
+        Number(partes[1]) - 1,
+        Number(partes[2])
+    );
+
+    d.setDate(d.getDate() + dias);
+
+    return d.getFullYear() + "-" +
+        String(d.getMonth() + 1).padStart(2, "0") + "-" +
+        String(d.getDate()).padStart(2, "0");
+}
+
+function guardarDatos() {
+    localStorage.setItem("medioAmbienteDatos", JSON.stringify(datos));
+}
+
+function prepararMisiones() {
+    var hoy = fechaLocal();
+
+    if (!datos.misiones[hoy]) {
+        var ayer = moverFecha(hoy, -1);
+        var conjuntoAyer = datos.misiones[ayer] ?
+            datos.misiones[ayer].grupo : -1;
+
+        var opciones = [];
+
+        for (var i = 0; i < retos.length; i++) {
+            if (i !== conjuntoAyer) opciones.push(i);
+        }
+
+        var grupo = opciones[Math.floor(Math.random() * opciones.length)];
+
+        datos.misiones[hoy] = {
+            grupo: grupo,
+            completadas: [false, false, false]
+        };
+    }
+
+    guardarDatos();
+    mostrarMisiones();
+}
+
+function mostrarMisiones() {
+    var hoy = fechaLocal();
+    var dia = datos.misiones[hoy];
+
+    document.getElementById("fechaMisiones").textContent = hoy;
+
+    var contenedor = document.getElementById("listaMisiones");
+    contenedor.innerHTML = "";
+
+    var cantidad = 0;
+
+    for (var i = 0; i < 3; i++) {
+        if (dia.completadas[i]) cantidad++;
+
+        var tarjeta = document.createElement("div");
+        tarjeta.className = "mision" +
+            (dia.completadas[i] ? " completada" : "");
+
+        var etiqueta = document.createElement("label");
+        var casilla = document.createElement("input");
+
+        casilla.type = "checkbox";
+        casilla.checked = dia.completadas[i];
+        casilla.disabled = !!datos.historial[hoy];
+        casilla.setAttribute("aria-label", retos[dia.grupo][i]);
+
+        casilla.onchange = (function(indice) {
+            return function() {
+                cambiarMision(indice, this.checked);
+            };
+        })(i);
+
+        etiqueta.appendChild(casilla);
+        etiqueta.appendChild(
+            document.createTextNode(
+                "Misión " + (i + 1) + ": " + retos[dia.grupo][i]
+            )
+        );
+
+        tarjeta.appendChild(etiqueta);
+        contenedor.appendChild(tarjeta);
+    }
+
+    document.getElementById("contadorMisiones").textContent =
+        cantidad + " de 3";
+
+    document.getElementById("barraMisiones").style.width =
+        (cantidad / 3 * 100) + "%";
+
+    document.getElementById("racha").textContent = datos.racha;
+
+    if (datos.historial[hoy]) {
+        document.getElementById("mensajeMisiones").textContent =
+            "🎉 ¡Ya completaste las tres misiones de hoy!";
+    } else if (cantidad === 2) {
+        document.getElementById("mensajeMisiones").textContent =
+            "¡Solo te falta una misión para completar el día!";
+    } else {
+        document.getElementById("mensajeMisiones").textContent =
+            "¡Cada misión cuenta! Completa las tres para avanzar en tu racha.";
+    }
+
+    actualizarInsignias();
+}
+
+function cambiarMision(indice, marcada) {
+    var hoy = fechaLocal();
+
+    if (datos.historial[hoy]) return;
+
+    datos.misiones[hoy].completadas[indice] = marcada;
+
+    var completadas = datos.misiones[hoy].completadas;
+    var total = completadas.filter(Boolean).length;
+
+    if (total === 3) {
+        completarDia(hoy);
+    }
+
+    guardarDatos();
+    mostrarMisiones();
+}
+
+function completarDia(hoy) {
+    if (datos.historial[hoy]) return;
+
+    var ayer = moverFecha(hoy, -1);
+
+    if (datos.ultimaCompleta === ayer) {
+        datos.racha++;
+    } else {
+        datos.racha = 1;
+    }
+
+    datos.historial[hoy] = true;
+    datos.ultimaCompleta = hoy;
+
+    var mensajes = [
+        "🥳 ¡Día completado! Tu racha es de " + datos.racha + " días."
+    ];
+
+    if (datos.racha === 7) {
+        mensajes.push("¡Has desbloqueado la insignia de una semana!");
+    }
+
+    if (datos.racha === 30) {
+        mensajes.push("¡Has desbloqueado la insignia de un mes!");
+    }
+
+    if (datos.racha === 180) {
+        mensajes.push("¡Has desbloqueado la insignia de seis meses!");
+    }
+
+    if (datos.racha === 365) {
+        mensajes.push("¡Has desbloqueado la insignia de un año!");
+    }
+
+    document.getElementById("mensajeMisiones").textContent =
+        mensajes.join(" ");
+}
+
+function actualizarInsignias() {
+    var metas = [
+        { id: "insignia7", dias: 7 },
+        { id: "insignia30", dias: 30 },
+        { id: "insignia180", dias: 180 },
+        { id: "insignia365", dias: 365 }
+    ];
+
+    for (var i = 0; i < metas.length; i++) {
+        var elemento = document.getElementById(metas[i].id);
+        var desbloqueada = datos.racha >= metas[i].dias;
+
+        elemento.classList.toggle("desbloqueada", desbloqueada);
+        elemento.querySelector("small").textContent =
+            desbloqueada ? "✅ Desbloqueada" : "🔒 Bloqueada";
+    }
+}
+
+/* COMPROBAR SI LA RACHA SIGUE ACTIVA */
+
+function comprobarRacha() {
+    if (!datos.ultimaCompleta) {
+        datos.racha = 0;
+        return;
+    }
+
+    var hoy = fechaLocal();
+    var ayer = moverFecha(hoy, -1);
+
+    if (datos.ultimaCompleta !== hoy &&
+        datos.ultimaCompleta !== ayer) {
+        datos.racha = 0;
+    }
+}
+
+/* JUEGO DE BASURA */
+
+var canvas = document.getElementById("juego");
+var ctx = canvas.getContext("2d");
+
+var jugador;
+var basura;
+var disparos;
+var puntos;
+var perdidas;
+var juegoActivo = false;
+var movimiento = 0;
+var teclas = {};
+var ultimoTiempo = 0;
+var ultimoDisparo = 0;
+var siguienteBasura = 0;
+var animacion = null;
+
+function reiniciarEstadoJuego() {
+    jugador = {
+        x: 380,
+        y: 365,
+        ancho: 40,
+        alto: 35,
+        velocidad: 5
+    };
+
+    basura = [];
+    disparos = [];
+    puntos = 0;
+    perdidas = 0;
+    ultimoTiempo = 0;
+    ultimoDisparo = 0;
+    siguienteBasura = 0;
+
+    document.getElementById("puntos").textContent = puntos;
+    document.getElementById("perdidas").textContent = perdidas;
+}
+
+function dibujarJugador() {
+    ctx.font = "36px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("🧑", jugador.x + 20, jugador.y + 30);
+
+    ctx.font = "24px Arial";
+    ctx.fillText("🛡️", jugador.x + 20, jugador.y + 40);
+}
+
+function dibujarJuego() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#b9e8ff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#64ae5d";
+    ctx.fillRect(0, 400, canvas.width, 30);
+
+    ctx.font = "24px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("🌳", 65, 395);
+    ctx.fillText("🌳", 735, 395);
+
+    if (!jugador) return;
+
+    dibujarJugador();
+
+    for (var i = 0; i < basura.length; i++) {
+        ctx.font = "27px Arial";
+        ctx.fillText(basura[i].emoji,
+            basura[i].x, basura[i].y);
+    }
+
+    ctx.fillStyle = "#ff553d";
+
+    for (var j = 0; j < disparos.length; j++) {
+        ctx.fillRect(disparos[j].x - 3, disparos[j].y, 6, 15);
+    }
+}
+
+function iniciarJuego() {
+    if (juegoActivo) return;
+
+    if (!jugador) reiniciarEstadoJuego();
+
+    juegoActivo = true;
+    document.getElementById("estadoJuego").textContent =
+        "¡En marcha! Elimina la basura y salva el planeta.";
+
+    ultimoTiempo = 0;
+    animacion = requestAnimationFrame(actualizarJuego);
+}
+
+function pausarJuego() {
+    juegoActivo = false;
+
+    if (animacion !== null) {
+        cancelAnimationFrame(animacion);
+        animacion = null;
+    }
+
+    if (jugador) dibujarJuego();
+
+    document.getElementById("estadoJuego").textContent =
+        "Juego pausado. Pulsa Iniciar para continuar.";
+}
+
+function reiniciarJuego() {
+    juegoActivo = false;
+
+    if (animacion !== null) {
+        cancelAnimationFrame(animacion);
+        animacion = null;
+    }
+
+    reiniciarEstadoJuego();
+    dibujarJuego();
+
+    document.getElementById("estadoJuego").textContent =
+        "Juego reiniciado. ¡Prepárate para salvar el planeta!";
+}
+
+function iniciarMovimiento(direccion) {
+    movimiento = direccion;
+}
+
+function detenerMovimiento() {
+    movimiento = 0;
+}
+
+function disparar() {
+    if (!jugador) return;
+
+    var ahora = Date.now();
+
+    if (ahora - ultimoDisparo < 250) return;
+
+    ultimoDisparo = ahora;
+
+    disparos.push({
+        x: jugador.x + jugador.ancho / 2,
+        y: jugador.y
+    });
+}
+
+function actualizarJuego(tiempo) {
+    if (!juegoActivo) return;
+
+    if (!ultimoTiempo) ultimoTiempo = tiempo;
+
+    var delta = Math.min((tiempo - ultimoTiempo) / 16.67, 2);
+    ultimoTiempo = tiempo;
+
+    if (teclas["a"] || teclas["arrowleft"]) movimiento = -1;
+    else if (teclas["d"] || teclas["arrowright"]) movimiento = 1;
+    else if (!teclas["a"] && !teclas["d"] &&
+             !teclas["arrowleft"] && !teclas["arrowright"]) {
+        movimiento = 0;
+    }
+
+    jugador.x += movimiento * jugador.velocidad * delta;
+    jugador.x = Math.max(0, Math.min(
+        canvas.width - jugador.ancho, jugador.x
+    ));
+
+    if (teclas[" "]) disparar();
+
+    if (tiempo > siguienteBasura) {
+        var emojis = ["🧴", "🥫", "🗑️", "🧃", "🧻"];
+
+        basura.push({
+            x: 25 + Math.random() * (canvas.width - 50),
+            y: -20,
+            velocidad: 1.5 + Math.random() * 1.8 + puntos * 0.015,
+            emoji: emojis[Math.floor(Math.random() * emojis.length)]
+        });
+
+        siguienteBasura = tiempo + Math.max(350, 900 - puntos * 5);
+    }
+
+    for (var i = disparos.length - 1; i >= 0; i--) {
+        disparos[i].y -= 8 * delta;
+
+        if (disparos[i].y < 0) {
+            disparos.splice(i, 1);
+        }
+    }
+
+    for (var b = basura.length - 1; b >= 0; b--) {
+        basura[b].y += basura[b].velocidad * delta;
+
+        if (basura[b].y > 405) {
+            basura.splice(b, 1);
+            perdidas++;
+            document.getElementById("perdidas").textContent = perdidas;
+            continue;
+        }
+
+        var eliminada = false;
+
+        for (var d = disparos.length - 1; d >= 0; d--) {
+            var distanciaX = Math.abs(disparos[d].x - basura[b].x);
+            var distanciaY = Math.abs(disparos[d].y - basura[b].y);
+
+            if (distanciaX < 25 && distanciaY < 25) {
+                basura.splice(b, 1);
+                disparos.splice(d, 1);
+                puntos++;
+                document.getElementById("puntos").textContent = puntos;
+                eliminada = true;
+                break;
+            }
+        }
+
+        if (eliminada) continue;
+    }
+
+    dibujarJuego();
+    animacion = requestAnimationFrame(actualizarJuego);
+}
+
+document.addEventListener("keydown", function(e) {
+    var tecla = e.key.toLowerCase();
+
+    if ([" ", "arrowleft", "arrowright"].indexOf(tecla) !== -1) {
+        e.preventDefault();
+    }
+
+    teclas[tecla] = true;
+
+    if (tecla === " " && !e.repeat) disparar();
+});
+
+document.addEventListener("keyup", function(e) {
+    teclas[e.key.toLowerCase()] = false;
+});
+
+/* INICIAR LA PÁGINA */
+
+comprobarRacha();
+prepararMisiones();
+reiniciarEstadoJuego();
+dibujarJuego();
+
+</script>
+
+</body>
+</html>
